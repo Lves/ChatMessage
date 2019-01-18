@@ -18,6 +18,13 @@
 
 #ifndef JSQMessages_JSQMessages_h
 #define JSQMessages_JSQMessages_h
+// UIScreen width.
+#define  kScreenWidth   [UIScreen mainScreen].bounds.size.width
+// UIScreen height.
+#define  kScreenHeight  [UIScreen mainScreen].bounds.size.height
+// iPhone X
+#define  is_iPhoneX (kScreenHeight == 896.f || kScreenHeight == 812.f ? YES : NO)
+
 
 #import "JSQMessagesViewController.h"
 

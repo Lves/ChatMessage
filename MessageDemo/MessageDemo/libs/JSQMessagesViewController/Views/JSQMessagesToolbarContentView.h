@@ -35,6 +35,7 @@ FOUNDATION_EXPORT const CGFloat kJSQMessagesToolbarContentViewHorizontalSpacingD
  *  the send button, and the other as the accessory button. The text view is used for composing messages.
  */
 @interface JSQMessagesToolbarContentView : UIView
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *bottomViewHConstraint;
 
 /**
  *  Returns the text view in which the user composes a message.

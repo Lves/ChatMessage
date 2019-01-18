@@ -7,9 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "BaseMessagesViewController.h"
 #import "JSQMessages.h"
 
-@interface ViewController : JSQMessagesViewController<UIActionSheetDelegate, JSQMessagesComposerTextViewPasteDelegate>
+@interface ViewController : BaseMessagesViewController<UIActionSheetDelegate, JSQMessagesComposerTextViewPasteDelegate>
 
 - (void)receiveMessagePressed:(UIBarButtonItem *)sender;
 

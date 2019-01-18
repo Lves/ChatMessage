@@ -7,6 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5E00D25921F1CB7F0052DDD5 /* MobileInputContentView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5E00D25321F1CB7F0052DDD5 /* MobileInputContentView.xib */; };
+		5E00D25A21F1CB7F0052DDD5 /* MobileInputContentView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E00D25521F1CB7F0052DDD5 /* MobileInputContentView.m */; };
+		5E00D25B21F1CB7F0052DDD5 /* BaseMessageToolBarContentView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5E00D25621F1CB7F0052DDD5 /* BaseMessageToolBarContentView.xib */; };
+		5E00D25C21F1CB7F0052DDD5 /* BaseMessageToolBarContentView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E00D25821F1CB7F0052DDD5 /* BaseMessageToolBarContentView.m */; };
+		5E00D25F21F1CBE30052DDD5 /* PasswordMessageToolBarContentView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E00D25E21F1CBE30052DDD5 /* PasswordMessageToolBarContentView.m */; };
+		5E00D26121F1CBF00052DDD5 /* PasswordMessageToolBarContentView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5E00D26021F1CBF00052DDD5 /* PasswordMessageToolBarContentView.xib */; };
 		5E67F15A21F0699500DA094E /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E67F15921F0699500DA094E /* AppDelegate.m */; };
 		5E67F15D21F0699500DA094E /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E67F15C21F0699500DA094E /* ViewController.m */; };
 		5E67F16021F0699500DA094E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5E67F15E21F0699500DA094E /* Main.storyboard */; };
@@ -59,9 +65,21 @@
 		5E67F20021F069F500DA094E /* NSString+JSQMessages.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E67F1D021F069F500DA094E /* NSString+JSQMessages.m */; };
 		5E67F20121F069F500DA094E /* UIView+JSQMessages.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E67F1D321F069F500DA094E /* UIView+JSQMessages.m */; };
 		5E67F20421F06C7100DA094E /* DemoModelData.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E67F20321F06C7100DA094E /* DemoModelData.m */; };
+		5E8F32D921F17A980063C23E /* CustomMessagesInputToolbar.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E8F32D821F17A980063C23E /* CustomMessagesInputToolbar.m */; };
+		5E8F32E221F17DBD0063C23E /* BaseMessagesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E8F32E021F17DBD0063C23E /* BaseMessagesViewController.m */; };
+		5E8F32E321F17DBD0063C23E /* BaseMessagesViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5E8F32E121F17DBD0063C23E /* BaseMessagesViewController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		5E00D25321F1CB7F0052DDD5 /* MobileInputContentView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MobileInputContentView.xib; sourceTree = "<group>"; };
+		5E00D25421F1CB7F0052DDD5 /* BaseMessageToolBarContentView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseMessageToolBarContentView.h; sourceTree = "<group>"; };
+		5E00D25521F1CB7F0052DDD5 /* MobileInputContentView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MobileInputContentView.m; sourceTree = "<group>"; };
+		5E00D25621F1CB7F0052DDD5 /* BaseMessageToolBarContentView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BaseMessageToolBarContentView.xib; sourceTree = "<group>"; };
+		5E00D25721F1CB7F0052DDD5 /* MobileInputContentView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MobileInputContentView.h; sourceTree = "<group>"; };
+		5E00D25821F1CB7F0052DDD5 /* BaseMessageToolBarContentView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseMessageToolBarContentView.m; sourceTree = "<group>"; };
+		5E00D25D21F1CBE30052DDD5 /* PasswordMessageToolBarContentView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PasswordMessageToolBarContentView.h; sourceTree = "<group>"; };
+		5E00D25E21F1CBE30052DDD5 /* PasswordMessageToolBarContentView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PasswordMessageToolBarContentView.m; sourceTree = "<group>"; };
+		5E00D26021F1CBF00052DDD5 /* PasswordMessageToolBarContentView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PasswordMessageToolBarContentView.xib; sourceTree = "<group>"; };
 		5E67F15521F0699500DA094E /* MessageDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MessageDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5E67F15821F0699500DA094E /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		5E67F15921F0699500DA094E /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -166,6 +184,11 @@
 		5E67F1D421F069F500DA094E /* NSBundle+JSQMessages.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSBundle+JSQMessages.h"; sourceTree = "<group>"; };
 		5E67F20221F06C7000DA094E /* DemoModelData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DemoModelData.h; sourceTree = "<group>"; };
 		5E67F20321F06C7100DA094E /* DemoModelData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DemoModelData.m; sourceTree = "<group>"; };
+		5E8F32D721F17A980063C23E /* CustomMessagesInputToolbar.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CustomMessagesInputToolbar.h; sourceTree = "<group>"; };
+		5E8F32D821F17A980063C23E /* CustomMessagesInputToolbar.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CustomMessagesInputToolbar.m; sourceTree = "<group>"; };
+		5E8F32DF21F17DBD0063C23E /* BaseMessagesViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BaseMessagesViewController.h; sourceTree = "<group>"; };
+		5E8F32E021F17DBD0063C23E /* BaseMessagesViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BaseMessagesViewController.m; sourceTree = "<group>"; };
+		5E8F32E121F17DBD0063C23E /* BaseMessagesViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BaseMessagesViewController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -179,6 +202,22 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		5E00D25221F1CB7F0052DDD5 /* TabBarContentViews */ = {
+			isa = PBXGroup;
+			children = (
+				5E00D25421F1CB7F0052DDD5 /* BaseMessageToolBarContentView.h */,
+				5E00D25821F1CB7F0052DDD5 /* BaseMessageToolBarContentView.m */,
+				5E00D25621F1CB7F0052DDD5 /* BaseMessageToolBarContentView.xib */,
+				5E00D25721F1CB7F0052DDD5 /* MobileInputContentView.h */,
+				5E00D25521F1CB7F0052DDD5 /* MobileInputContentView.m */,
+				5E00D25321F1CB7F0052DDD5 /* MobileInputContentView.xib */,
+				5E00D25D21F1CBE30052DDD5 /* PasswordMessageToolBarContentView.h */,
+				5E00D25E21F1CBE30052DDD5 /* PasswordMessageToolBarContentView.m */,
+				5E00D26021F1CBF00052DDD5 /* PasswordMessageToolBarContentView.xib */,
+			);
+			path = TabBarContentViews;
+			sourceTree = "<group>";
+		};
 		5E67F14C21F0699500DA094E = {
 			isa = PBXGroup;
 			children = (
@@ -198,6 +237,7 @@
 		5E67F15721F0699500DA094E /* MessageDemo */ = {
 			isa = PBXGroup;
 			children = (
+				5E67F20521F08C2E00DA094E /* Customs */,
 				5E67F17021F069F500DA094E /* libs */,
 				5E67F15821F0699500DA094E /* AppDelegate.h */,
 				5E67F15921F0699500DA094E /* AppDelegate.m */,
@@ -307,9 +347,9 @@
 		5E67F1A421F069F500DA094E /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				5E67F1A521F069F500DA094E /* JSQMessagesViewController.m */,
 				5E67F1A621F069F500DA094E /* JSQMessagesViewController.xib */,
 				5E67F1A721F069F500DA094E /* JSQMessagesViewController.h */,
+				5E67F1A521F069F500DA094E /* JSQMessagesViewController.m */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -317,6 +357,7 @@
 		5E67F1A821F069F500DA094E /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				5E67F1C021F069F500DA094E /* JSQMessagesComposerTextView.h */,
 				5E67F1A921F069F500DA094E /* JSQMessagesComposerTextView.m */,
 				5E67F1AA21F069F500DA094E /* JSQMessagesLoadEarlierHeaderView.h */,
 				5E67F1AC21F069F500DA094E /* JSQMessagesLabel.h */,
@@ -338,7 +379,6 @@
 				5E67F1BD21F069F500DA094E /* JSQMessagesMediaPlaceholderView.h */,
 				5E67F1BE21F069F500DA094E /* JSQMessagesLabel.m */,
 				5E67F1BF21F069F500DA094E /* JSQMessagesLoadEarlierHeaderView.m */,
-				5E67F1C021F069F500DA094E /* JSQMessagesComposerTextView.h */,
 				5E67F1C121F069F500DA094E /* JSQMessagesCellTextView.m */,
 				5E67F1BC21F069F500DA094E /* JSQMessagesToolbarContentView.h */,
 				5E67F1AB21F069F500DA094E /* JSQMessagesToolbarContentView.m */,
@@ -375,6 +415,19 @@
 				5E67F1D421F069F500DA094E /* NSBundle+JSQMessages.h */,
 			);
 			path = Categories;
+			sourceTree = "<group>";
+		};
+		5E67F20521F08C2E00DA094E /* Customs */ = {
+			isa = PBXGroup;
+			children = (
+				5E00D25221F1CB7F0052DDD5 /* TabBarContentViews */,
+				5E8F32D721F17A980063C23E /* CustomMessagesInputToolbar.h */,
+				5E8F32D821F17A980063C23E /* CustomMessagesInputToolbar.m */,
+				5E8F32DF21F17DBD0063C23E /* BaseMessagesViewController.h */,
+				5E8F32E021F17DBD0063C23E /* BaseMessagesViewController.m */,
+				5E8F32E121F17DBD0063C23E /* BaseMessagesViewController.xib */,
+			);
+			path = Customs;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -435,8 +488,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				5E67F16521F0699700DA094E /* LaunchScreen.storyboard in Resources */,
+				5E00D26121F1CBF00052DDD5 /* PasswordMessageToolBarContentView.xib in Resources */,
+				5E00D25B21F1CB7F0052DDD5 /* BaseMessageToolBarContentView.xib in Resources */,
 				5E67F1FC21F069F500DA094E /* JSQMessagesAssets.bundle in Resources */,
 				5E67F1EF21F069F500DA094E /* JSQMessagesTypingIndicatorFooterView.xib in Resources */,
+				5E00D25921F1CB7F0052DDD5 /* MobileInputContentView.xib in Resources */,
+				5E8F32E321F17DBD0063C23E /* BaseMessagesViewController.xib in Resources */,
 				5E67F16221F0699700DA094E /* Assets.xcassets in Resources */,
 				5E67F1F621F069F500DA094E /* JSQMessagesToolbarContentView.xib in Resources */,
 				5E67F16021F0699500DA094E /* Main.storyboard in Resources */,
@@ -459,6 +516,7 @@
 				5E67F1D521F069F500DA094E /* JSQMessagesCollectionViewLayoutAttributes.m in Sources */,
 				5E67F1FA21F069F500DA094E /* JSQMessagesTypingView.m in Sources */,
 				5E67F20421F06C7100DA094E /* DemoModelData.m in Sources */,
+				5E00D25A21F1CB7F0052DDD5 /* MobileInputContentView.m in Sources */,
 				5E67F1EB21F069F500DA094E /* JSQMessagesToolbarContentView.m in Sources */,
 				5E67F1E621F069F500DA094E /* JSQMediaItem.m in Sources */,
 				5E67F1E521F069F500DA094E /* JSQMessage.m in Sources */,
@@ -470,6 +528,7 @@
 				5E67F1D921F069F500DA094E /* JSQMessagesCollectionViewFlowLayout.m in Sources */,
 				5E67F1F921F069F500DA094E /* JSQMessagesCollectionViewCellOutgoing.m in Sources */,
 				5E67F1DE21F069F500DA094E /* JSQMessagesTimestampFormatter.m in Sources */,
+				5E8F32D921F17A980063C23E /* CustomMessagesInputToolbar.m in Sources */,
 				5E67F1F021F069F500DA094E /* JSQMessagesInputToolbar.m in Sources */,
 				5E67F1F421F069F500DA094E /* JSQMessagesLoadEarlierHeaderView.m in Sources */,
 				5E67F1F121F069F500DA094E /* JSQMessagesCollectionViewCellIncoming.m in Sources */,
@@ -481,10 +540,12 @@
 				5E67F1DD21F069F500DA094E /* JSQMessagesVideoThumbnailFactory.m in Sources */,
 				5E67F1F221F069F500DA094E /* JSQMessagesTypingIndicatorFooterView.m in Sources */,
 				5E67F1E721F069F500DA094E /* JSQVideoMediaItem.m in Sources */,
+				5E8F32E221F17DBD0063C23E /* BaseMessagesViewController.m in Sources */,
 				5E67F1DB21F069F500DA094E /* JSQMessagesAvatarImageFactory.m in Sources */,
 				5E67F1EC21F069F500DA094E /* JSQMessagesMediaPlaceholderView.m in Sources */,
 				5E67F1E421F069F500DA094E /* JSQPhotoMediaItem.m in Sources */,
 				5E67F1D621F069F500DA094E /* JSQMessagesBubblesSizeCalculator.m in Sources */,
+				5E00D25C21F1CB7F0052DDD5 /* BaseMessageToolBarContentView.m in Sources */,
 				5E67F1E121F069F500DA094E /* JSQMessagesAvatarImage.m in Sources */,
 				5E67F1E821F069F500DA094E /* JSQMessagesViewController.m in Sources */,
 				5E67F1F721F069F500DA094E /* JSQMessagesCollectionViewCell.m in Sources */,
@@ -496,6 +557,7 @@
 				5E67F1DC21F069F500DA094E /* JSQMessagesToolbarButtonFactory.m in Sources */,
 				5E67F1E221F069F500DA094E /* JSQLocationMediaItem.m in Sources */,
 				5E67F1F821F069F500DA094E /* JSQMessagesCollectionView.m in Sources */,
+				5E00D25F21F1CBE30052DDD5 /* PasswordMessageToolBarContentView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

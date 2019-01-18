@@ -21,6 +21,8 @@
 
 #import "JSQMessagesToolbarContentView.h"
 
+static void * kJSQMessagesInputToolbarKeyValueObservingContext = &kJSQMessagesInputToolbarKeyValueObservingContext;
+
 @class JSQMessagesInputToolbar;
 
 NS_ASSUME_NONNULL_BEGIN

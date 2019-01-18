@@ -26,7 +26,7 @@
 #import "UIImage+JSQMessages.h"
 #import "UIView+JSQMessages.h"
 
-static void * kJSQMessagesInputToolbarKeyValueObservingContext = &kJSQMessagesInputToolbarKeyValueObservingContext;
+
 
 
 @interface JSQMessagesInputToolbar ()

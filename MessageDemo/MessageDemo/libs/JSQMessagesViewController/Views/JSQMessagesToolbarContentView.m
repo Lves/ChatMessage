@@ -17,7 +17,7 @@
 //
 
 #import "JSQMessagesToolbarContentView.h"
-
+#import "JSQMessages.h"
 #import "UIView+JSQMessages.h"
 
 const CGFloat kJSQMessagesToolbarContentViewHorizontalSpacingDefault = 8.0f;
@@ -62,6 +62,12 @@ const CGFloat kJSQMessagesToolbarContentViewHorizontalSpacingDefault = 8.0f;
     self.rightHorizontalSpacingConstraint.constant = kJSQMessagesToolbarContentViewHorizontalSpacingDefault;
 
     self.backgroundColor = [UIColor clearColor];
+    //add by lixingle ,完善iphoneX手机安全区bug
+    if (is_iPhoneX) {
+        self.bottomViewHConstraint.constant = 34+6;
+    }else{
+         self.bottomViewHConstraint.constant = 6;
+    }
 }
 
 #pragma mark - Setters

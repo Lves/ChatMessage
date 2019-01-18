@@ -39,11 +39,11 @@
     [self setTranslatesAutoresizingMaskIntoConstraints:NO];
 
     CGFloat cornerRadius = 6.0f;
-
-    self.backgroundColor = [UIColor whiteColor];
-    self.layer.borderWidth = 0.5f;
-    self.layer.borderColor = [UIColor lightGrayColor].CGColor;
-    self.layer.cornerRadius = cornerRadius;
+    //modify by lixingle
+    self.backgroundColor = [UIColor clearColor];
+//    self.layer.borderWidth = 0.5f;
+//    self.layer.borderColor = [UIColor lightGrayColor].CGColor;
+//    self.layer.cornerRadius = cornerRadius;
 
     self.scrollIndicatorInsets = UIEdgeInsetsMake(cornerRadius, 0.0f, cornerRadius, 0.0f);
 
@@ -62,7 +62,8 @@
     self.dataDetectorTypes = UIDataDetectorTypeNone;
     self.keyboardAppearance = UIKeyboardAppearanceDefault;
     self.keyboardType = UIKeyboardTypeDefault;
-    self.returnKeyType = UIReturnKeyDefault;
+//    self.returnKeyType = UIReturnKeyDefault;
+    self.returnKeyType = UIReturnKeyDone;
 
     self.text = nil;
 
@@ -306,5 +307,6 @@
     [UIMenuController sharedMenuController].menuItems = nil;
     return [super canPerformAction:action withSender:sender];
 }
+
 
 @end
