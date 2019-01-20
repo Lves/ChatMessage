@@ -47,10 +47,7 @@ typedef NS_ENUM(NSUInteger, CountryType) {
     [self setTranslatesAutoresizingMaskIntoConstraints:NO];
     self.backgroundColor = [UIColor clearColor];
     [self.textField setReturnKeyType:UIReturnKeyDone];
-    self.textField.placeholder = [NSBundle jsq_localizedStringForKey:@"new_message"];
-    self.textField.accessibilityLabel = [NSBundle jsq_localizedStringForKey:@"new_message"];
-    self.textField.font = [UIFont preferredFontForTextStyle:UIFontTextStyleBody];
-    self.textField.textColor = [UIColor lightGrayColor];
+    self.textField.placeholder = @"请输入手机号";
     [self.bottomCheckView setHidden:YES];
     self.isChecking = NO;
     [self updateChineUI];

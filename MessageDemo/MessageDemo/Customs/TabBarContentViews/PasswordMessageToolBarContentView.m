@@ -29,8 +29,8 @@
     [self.textField setReturnKeyType:UIReturnKeyDone];
     [self setTranslatesAutoresizingMaskIntoConstraints:NO];
     self.backgroundColor = [UIColor clearColor];
-    self.textField.placeholder = [NSBundle jsq_localizedStringForKey:@"new_message"];
-    self.textField.accessibilityLabel = [NSBundle jsq_localizedStringForKey:@"new_message"];
+    self.textField.placeholder = @"请输入密码";
+//    self.textField.accessibilityLabel = [NSBundle jsq_localizedStringForKey:@"new_message"];
 }
 
 
