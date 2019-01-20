@@ -112,24 +112,6 @@
                                                object:self.contentView.textView];
 }
 
-//- (void)updateSendButtonEnabledState
-//{
-//    if (!self.enablesSendButtonAutomatically) {
-//        return;
-//    }
-    
-//    BOOL enabled = [self.contentView.textView hasText];
-//    switch (self.sendButtonLocation) {
-//        case JSQMessagesInputSendButtonLocationRight:
-//            self.contentView.rightBarButtonItem.enabled = enabled;
-//            break;
-//        case JSQMessagesInputSendButtonLocationLeft:
-//            self.contentView.leftBarButtonItem.enabled = enabled;
-//            break;
-//        default:
-//            break;
-//    }
-//}
 
 #pragma mark - Notifications
 

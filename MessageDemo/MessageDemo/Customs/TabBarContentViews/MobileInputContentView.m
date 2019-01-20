@@ -9,8 +9,23 @@
 #import "MobileInputContentView.h"
 #import "NSBundle+JSQMessages.h"
 
+typedef NS_ENUM(NSUInteger, CountryType) {
+    CountryTypeChina,
+    CountryTypeUSA,
+};
+
 @interface MobileInputContentView ()
 @property (weak, nonatomic) IBOutlet JSQMessagesComposerTextView *textView;
+
+//leftButton
+@property (weak, nonatomic) IBOutlet UILabel *lblTopCountryCode;
+@property (weak, nonatomic) IBOutlet UIImageView *imgTopCountryLogo;
+@property (weak, nonatomic) IBOutlet UILabel *lblBottomCountryCode;
+@property (weak, nonatomic) IBOutlet UIImageView *imgBottomCountryLogo;
+
+@property (weak, nonatomic) IBOutlet UIView *bottomCheckView;
+@property (nonatomic, assign) BOOL isChecking;
+@property (nonatomic, assign) CountryType currentCountryType;
 @end
 
 
@@ -43,6 +58,43 @@
     self.textView.accessibilityLabel = [NSBundle jsq_localizedStringForKey:@"new_message"];
     self.textView.font = [UIFont preferredFontForTextStyle:UIFontTextStyleBody];
     self.textView.textColor = [UIColor lightGrayColor];
+    [self.bottomCheckView setHidden:YES];
+    self.isChecking = NO;
+    [self updateChineUI];
+}
+- (IBAction)topButtonClick:(id)sender {
+    if (self.isChecking) { //选择了china
+        self.isChecking = NO;
+        [self.bottomCheckView setHidden:YES];
+    }else{
+        [self.bottomCheckView setHidden:NO];
+        self.isChecking = YES;
+    }
+   
+}
+- (IBAction)bottomCountryClick:(id)sender {
+    self.isChecking = NO;
+    [self.bottomCheckView setHidden:YES];
+    [self exchangeButton];
 }
 
+- (void)exchangeButton{
+    if (self.currentCountryType == CountryTypeChina) {
+        self.lblTopCountryCode.text = @"+1";
+        self.imgTopCountryLogo.image = [UIImage imageNamed:@"usa"];
+        self.lblBottomCountryCode.text = @"+86";
+        self.imgBottomCountryLogo.image = [UIImage imageNamed:@"china"];
+        self.currentCountryType = CountryTypeUSA;
+    }else if (self.currentCountryType == CountryTypeUSA){
+        [self updateChineUI];
+    }
+}
+
+- (void)updateChineUI{
+    self.lblTopCountryCode.text = @"+86";
+    self.imgTopCountryLogo.image = [UIImage imageNamed:@"china"];
+    self.lblBottomCountryCode.text = @"+1";
+    self.imgBottomCountryLogo.image = [UIImage imageNamed:@"usa"];
+    self.currentCountryType = CountryTypeChina;
+}
 @end
