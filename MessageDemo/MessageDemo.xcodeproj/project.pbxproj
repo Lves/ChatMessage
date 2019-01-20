@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1BE6B5E121F435620090E39A /* BaseTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = 1BE6B5E021F435620090E39A /* BaseTextField.m */; };
 		5E00D25921F1CB7F0052DDD5 /* MobileInputContentView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5E00D25321F1CB7F0052DDD5 /* MobileInputContentView.xib */; };
 		5E00D25A21F1CB7F0052DDD5 /* MobileInputContentView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E00D25521F1CB7F0052DDD5 /* MobileInputContentView.m */; };
 		5E00D25B21F1CB7F0052DDD5 /* BaseMessageToolBarContentView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5E00D25621F1CB7F0052DDD5 /* BaseMessageToolBarContentView.xib */; };
@@ -71,6 +72,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		1BE6B5DF21F435620090E39A /* BaseTextField.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BaseTextField.h; sourceTree = "<group>"; };
+		1BE6B5E021F435620090E39A /* BaseTextField.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BaseTextField.m; sourceTree = "<group>"; };
 		5E00D25321F1CB7F0052DDD5 /* MobileInputContentView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MobileInputContentView.xib; sourceTree = "<group>"; };
 		5E00D25421F1CB7F0052DDD5 /* BaseMessageToolBarContentView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseMessageToolBarContentView.h; sourceTree = "<group>"; };
 		5E00D25521F1CB7F0052DDD5 /* MobileInputContentView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MobileInputContentView.m; sourceTree = "<group>"; };
@@ -214,6 +217,8 @@
 				5E00D25D21F1CBE30052DDD5 /* PasswordMessageToolBarContentView.h */,
 				5E00D25E21F1CBE30052DDD5 /* PasswordMessageToolBarContentView.m */,
 				5E00D26021F1CBF00052DDD5 /* PasswordMessageToolBarContentView.xib */,
+				1BE6B5DF21F435620090E39A /* BaseTextField.h */,
+				1BE6B5E021F435620090E39A /* BaseTextField.m */,
 			);
 			path = TabBarContentViews;
 			sourceTree = "<group>";
@@ -525,6 +530,7 @@
 				5E67F1F321F069F500DA094E /* JSQMessagesLabel.m in Sources */,
 				5E67F1FE21F069F500DA094E /* UIColor+JSQMessages.m in Sources */,
 				5E67F1EA21F069F500DA094E /* JSQMessagesComposerTextView.m in Sources */,
+				1BE6B5E121F435620090E39A /* BaseTextField.m in Sources */,
 				5E67F1D921F069F500DA094E /* JSQMessagesCollectionViewFlowLayout.m in Sources */,
 				5E67F1F921F069F500DA094E /* JSQMessagesCollectionViewCellOutgoing.m in Sources */,
 				5E67F1DE21F069F500DA094E /* JSQMessagesTimestampFormatter.m in Sources */,

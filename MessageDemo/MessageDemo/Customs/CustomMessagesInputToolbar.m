@@ -32,9 +32,6 @@
     [super awakeFromNib];
     self.backgroundColor = [UIColor whiteColor];
     self.jsq_isObserving = NO;
-    self.enablesSendButtonAutomatically = YES;
-    self.preferredDefaultHeight = 44.0f;
-//    self.maximumHeight = NSNotFound;
     
     //去掉Toolbar的顶部border
     self.clipsToBounds = YES;
@@ -70,20 +67,9 @@
         self.contentView = self.passwordBarContentView;
     }
     [self setupContentView];
-    self.contentView.textView.delegate = delegate;
+    self.contentView.textField.delegate = delegate;
 }
 
-- (void)setPreferredDefaultHeight:(CGFloat)preferredDefaultHeight
-{
-//    NSParameterAssert(preferredDefaultHeight > 0.0f);
-//    _preferredDefaultHeight = preferredDefaultHeight;
-}
-
-- (void)setEnablesSendButtonAutomatically:(BOOL)enablesSendButtonAutomatically
-{
-//    _enablesSendButtonAutomatically = enablesSendButtonAutomatically;
-//    [self updateSendButtonEnabledState];
-}
 
 #pragma mark - Actions
 
@@ -105,20 +91,8 @@
     [self jsq_pinAllEdgesOfSubview:self.contentView];
     [self setNeedsUpdateConstraints];
     [self jsq_addObservers];
-    
-    [[NSNotificationCenter defaultCenter] addObserver:self
-                                             selector:@selector(textViewTextDidChangeNotification:)
-                                                 name:UITextViewTextDidChangeNotification
-                                               object:self.contentView.textView];
 }
 
-
-#pragma mark - Notifications
-
-- (void)textViewTextDidChangeNotification:(NSNotification *)notification
-{
-//    [self updateSendButtonEnabledState];
-}
 
 #pragma mark - Key-value observing
 

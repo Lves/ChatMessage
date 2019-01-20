@@ -103,8 +103,6 @@ static void JSQInstallWorkaroundForSheetPresentationIssue26295020(void) {
 @property (weak, nonatomic) IBOutlet JSQMessagesCollectionView *collectionView;
 @property (strong, nonatomic) IBOutlet CustomMessagesInputToolbar *inputToolbar;
 
-@property (nonatomic) NSLayoutConstraint *toolbarHeightConstraint;
-
 @property (strong, nonatomic) NSIndexPath *selectedIndexPathForMenu;
 
 @end
@@ -139,14 +137,8 @@ static void JSQInstallWorkaroundForSheetPresentationIssue26295020(void) {
 {
     self.view.backgroundColor = [UIColor whiteColor];
     
-    self.toolbarHeightConstraint.constant = self.inputToolbar.preferredDefaultHeight;
-    
     self.collectionView.dataSource = self;
     self.collectionView.delegate = self;
-    
-//    self.inputToolbar.contentView.textView.placeHolder = [NSBundle jsq_localizedStringForKey:@"new_message"];
-//    self.inputToolbar.contentView.textView.accessibilityLabel = [NSBundle jsq_localizedStringForKey:@"new_message"];
-//    self.inputToolbar.contentView.textView.font = [UIFont preferredFontForTextStyle:UIFontTextStyleBody];
 
     [self.inputToolbar setCententViewType:ToolbarContentViewTypePassword delegate:self];
     [self.inputToolbar removeFromSuperview];
@@ -179,7 +171,7 @@ static void JSQInstallWorkaroundForSheetPresentationIssue26295020(void) {
     _collectionView.dataSource = nil;
     _collectionView.delegate = nil;
     
-    _inputToolbar.contentView.textView.delegate = nil;
+    _inputToolbar.contentView.textField.delegate = nil;
     _inputToolbar.delegate = nil;
 }
 
@@ -229,9 +221,6 @@ static void JSQInstallWorkaroundForSheetPresentationIssue26295020(void) {
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-    if (!self.inputToolbar.contentView.textView.hasText) {
-        self.toolbarHeightConstraint.constant = self.inputToolbar.preferredDefaultHeight;
-    }
     [self.view layoutIfNeeded];
     [self.collectionView.collectionViewLayout invalidateLayout];
     
@@ -330,11 +319,11 @@ static void JSQInstallWorkaroundForSheetPresentationIssue26295020(void) {
 
 - (void)finishSendingMessageAnimated:(BOOL)animated {
     
-    UITextView *textView = self.inputToolbar.contentView.textView;
-    textView.text = nil;
-    [textView.undoManager removeAllActions];
+    UITextField *textField = self.inputToolbar.contentView.textField;
+    textField.text = nil;
+    [textField.undoManager removeAllActions];
     
-    [[NSNotificationCenter defaultCenter] postNotificationName:UITextViewTextDidChangeNotification object:textView];
+    [[NSNotificationCenter defaultCenter] postNotificationName:UITextViewTextDidChangeNotification object:textField];
     
     [self.collectionView.collectionViewLayout invalidateLayoutWithContext:[JSQMessagesCollectionViewFlowLayoutInvalidationContext context]];
     [self.collectionView reloadData];
@@ -363,7 +352,7 @@ static void JSQInstallWorkaroundForSheetPresentationIssue26295020(void) {
     UIAccessibilityPostNotification(UIAccessibilityAnnouncementNotification, [NSBundle jsq_localizedStringForKey:@"new_message_received_accessibility_announcement"]);
     //测试用，修改toobar类型
     [self.inputToolbar setCententViewType:ToolbarContentViewTypeMobile delegate:self];
-    [self.inputToolbar.contentView.textView becomeFirstResponder];
+    [self.inputToolbar.contentView.textField becomeFirstResponder];
 }
 
 - (void)scrollToBottomAnimated:(BOOL)animated
@@ -759,10 +748,10 @@ static void JSQInstallWorkaroundForSheetPresentationIssue26295020(void) {
 - (NSString *)jsq_currentlyComposedMessageText
 {
     //  auto-accept any auto-correct suggestions
-    [self.inputToolbar.contentView.textView.inputDelegate selectionWillChange:self.inputToolbar.contentView.textView];
-    [self.inputToolbar.contentView.textView.inputDelegate selectionDidChange:self.inputToolbar.contentView.textView];
+    [self.inputToolbar.contentView.textField.inputDelegate selectionWillChange:self.inputToolbar.contentView.textField];
+    [self.inputToolbar.contentView.textField.inputDelegate selectionDidChange:self.inputToolbar.contentView.textField];
     
-    return [self.inputToolbar.contentView.textView.text jsq_stringByTrimingWhitespace];
+    return [self.inputToolbar.contentView.textField.text jsq_stringByTrimingWhitespace];
 }
 
 #pragma mark - Input
@@ -777,53 +766,41 @@ static void JSQInstallWorkaroundForSheetPresentationIssue26295020(void) {
     return YES;
 }
 
-#pragma mark - Text view delegate
-
-- (void)textViewDidBeginEditing:(UITextView *)textView
-{
-    if (textView != self.inputToolbar.contentView.textView) {
+#pragma mark - TextField delegate
+-(void)textFieldDidBeginEditing:(UITextField *)textField{
+    if (textField != self.inputToolbar.contentView.textField) {
         return;
     }
-    
-    [textView becomeFirstResponder];
-    
+    [textField becomeFirstResponder];
     if (self.automaticallyScrollsToMostRecentMessage) {
-        [self scrollToBottomAnimated:YES];
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            [self scrollToBottomAnimated:YES];
+        });
+        
     }
 }
-
-- (void)textViewDidChange:(UITextView *)textView
-{
-    if (textView != self.inputToolbar.contentView.textView) {
-        return;
-    }
-}
-
-- (void)textViewDidEndEditing:(UITextView *)textView
-{
-    if (textView != self.inputToolbar.contentView.textView) {
-        return;
+- (BOOL)textFieldShouldBeginEditing:(UITextField *)textField{
+    if (textField != self.inputToolbar.contentView.textField) {
+        return false;
     }
     
-    [textView resignFirstResponder];
+    return true;
 }
-- (BOOL)textView:(UITextView *)textView shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text{
-    if ([text isEqualToString:@"\n"]){ //判断输入的字是否是回车，即按下return
-        //在这里做你响应return键的代码
-        [textView resignFirstResponder];
-        
-        [self didPressSendButton:nil
-                 withMessageText:[self jsq_currentlyComposedMessageText]
-                        senderId:[self.collectionView.dataSource senderId]
-               senderDisplayName:[self.collectionView.dataSource senderDisplayName]
-                            date:[NSDate date]];
-        
-        
-        return NO; //这里返回NO，就代表return键值失效，即页面上按下return，不会出现换行，如果为yes，则输入页面会换行
+-(void)textFieldDidEndEditing:(UITextField *)textField{
+    if (textField != self.inputToolbar.contentView.textField) {
+        return;
     }
-    return YES;
+    [textField resignFirstResponder];
 }
-
+-(BOOL)textFieldShouldReturn:(UITextField *)textField{
+//    [textField resignFirstResponder];
+    [self didPressSendButton:nil
+             withMessageText:[self jsq_currentlyComposedMessageText]
+                    senderId:[self.collectionView.dataSource senderId]
+           senderDisplayName:[self.collectionView.dataSource senderDisplayName]
+                        date:[NSDate date]];
+    return NO;
+}
 #pragma mark - Notifications
 
 - (void)didReceiveMenuWillShowNotification:(NSNotification *)notification

@@ -13,9 +13,9 @@ typedef NS_ENUM(NSUInteger, CountryType) {
     CountryTypeChina,
     CountryTypeUSA,
 };
-
+@class BaseTextField;
 @interface MobileInputContentView ()
-@property (weak, nonatomic) IBOutlet JSQMessagesComposerTextView *textView;
+@property (weak, nonatomic) IBOutlet BaseTextField *textField;
 
 //leftButton
 @property (weak, nonatomic) IBOutlet UILabel *lblTopCountryCode;
@@ -30,16 +30,9 @@ typedef NS_ENUM(NSUInteger, CountryType) {
 
 
 @implementation MobileInputContentView
-
-#pragma mark - Class methods
-
+@synthesize textField;
 #pragma mark - UIView overrides
 
-- (void)setNeedsDisplay
-{
-    [super setNeedsDisplay];
-    [self.textView setNeedsDisplay];
-}
 + (UINib *)nib
 {
     return [UINib nibWithNibName:NSStringFromClass([MobileInputContentView class])
@@ -52,12 +45,12 @@ typedef NS_ENUM(NSUInteger, CountryType) {
     [super awakeFromNib];
     
     [self setTranslatesAutoresizingMaskIntoConstraints:NO];
-    
     self.backgroundColor = [UIColor clearColor];
-    self.textView.placeHolder = [NSBundle jsq_localizedStringForKey:@"new_message"];
-    self.textView.accessibilityLabel = [NSBundle jsq_localizedStringForKey:@"new_message"];
-    self.textView.font = [UIFont preferredFontForTextStyle:UIFontTextStyleBody];
-    self.textView.textColor = [UIColor lightGrayColor];
+    [self.textField setReturnKeyType:UIReturnKeyDone];
+    self.textField.placeholder = [NSBundle jsq_localizedStringForKey:@"new_message"];
+    self.textField.accessibilityLabel = [NSBundle jsq_localizedStringForKey:@"new_message"];
+    self.textField.font = [UIFont preferredFontForTextStyle:UIFontTextStyleBody];
+    self.textField.textColor = [UIColor lightGrayColor];
     [self.bottomCheckView setHidden:YES];
     self.isChecking = NO;
     [self updateChineUI];

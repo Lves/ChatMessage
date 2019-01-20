@@ -18,8 +18,6 @@ typedef NS_ENUM(NSUInteger, ToolbarContentViewType) {
 
 @interface CustomMessagesInputToolbar : UIToolbar
 @property (weak, nonatomic, nullable) BaseMessageToolBarContentView *contentView;
-@property (assign, nonatomic) CGFloat preferredDefaultHeight;
-//@property (assign, nonatomic) NSUInteger maximumHeight;
 
 - (void)setCententViewType:(ToolbarContentViewType)type delegate:(id)delegate;
 

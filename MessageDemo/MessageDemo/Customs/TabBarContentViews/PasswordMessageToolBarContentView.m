@@ -8,18 +8,14 @@
 
 #import "PasswordMessageToolBarContentView.h"
 #import "NSBundle+JSQMessages.h"
+#import "BaseTextField.h"
 @interface PasswordMessageToolBarContentView ()
-@property (weak, nonatomic) IBOutlet JSQMessagesComposerTextView *textView;
+@property (weak, nonatomic) IBOutlet BaseTextField *textField;
 @end
 
 
 @implementation PasswordMessageToolBarContentView
-
-- (void)setNeedsDisplay
-{
-    [super setNeedsDisplay];
-    [self.textView setNeedsDisplay];
-}
+@synthesize textField;
 + (UINib *)nib
 {
     return [UINib nibWithNibName:NSStringFromClass([PasswordMessageToolBarContentView class])
@@ -30,10 +26,11 @@
 - (void)awakeFromNib
 {
     [super awakeFromNib];
+    [self.textField setReturnKeyType:UIReturnKeyDone];
     [self setTranslatesAutoresizingMaskIntoConstraints:NO];
     self.backgroundColor = [UIColor clearColor];
-    self.textView.placeHolder = [NSBundle jsq_localizedStringForKey:@"new_message"];
-    self.textView.accessibilityLabel = [NSBundle jsq_localizedStringForKey:@"new_message"];
+    self.textField.placeholder = [NSBundle jsq_localizedStringForKey:@"new_message"];
+    self.textField.accessibilityLabel = [NSBundle jsq_localizedStringForKey:@"new_message"];
 }
 
 

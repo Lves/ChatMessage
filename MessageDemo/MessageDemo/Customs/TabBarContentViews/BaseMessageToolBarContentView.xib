@@ -15,24 +15,24 @@
             <rect key="frame" x="0.0" y="0.0" width="375" height="49"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" verticalHuggingPriority="251" verticalCompressionResistancePriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="il2-gV-ln1" customClass="JSQMessagesComposerTextView">
+                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="请输入" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="rgH-er-wb2" customClass="BaseTextField">
                     <rect key="frame" x="30" y="6" width="315" height="37"/>
-                    <color key="backgroundColor" red="0.66666668650000005" green="0.66666668650000005" blue="0.66666668650000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <nil key="textColor"/>
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                    <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                </textView>
+                    <textInputTraits key="textInputTraits"/>
+                </textField>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
-                <constraint firstItem="il2-gV-ln1" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="6" id="Hfe-QI-XeZ"/>
-                <constraint firstItem="il2-gV-ln1" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="30" id="jh3-1X-Pdy"/>
-                <constraint firstAttribute="trailing" secondItem="il2-gV-ln1" secondAttribute="trailing" constant="30" id="kdr-eR-x9L"/>
-                <constraint firstAttribute="bottom" secondItem="il2-gV-ln1" secondAttribute="bottom" constant="6" id="tE5-gl-epv"/>
+                <constraint firstAttribute="bottom" secondItem="rgH-er-wb2" secondAttribute="bottom" constant="6" id="7jI-iP-jWk"/>
+                <constraint firstItem="rgH-er-wb2" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="6" id="CNV-yF-Oo4"/>
+                <constraint firstItem="rgH-er-wb2" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="30" id="XrD-ci-cTF"/>
+                <constraint firstAttribute="trailing" secondItem="rgH-er-wb2" secondAttribute="trailing" constant="30" id="yyz-CU-thl"/>
             </constraints>
             <nil key="simulatedTopBarMetrics"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <connections>
-                <outlet property="textView" destination="il2-gV-ln1" id="b0b-Tn-Qw6"/>
+                <outlet property="textField" destination="rgH-er-wb2" id="frJ-MA-yC1"/>
             </connections>
             <point key="canvasLocation" x="136.80000000000001" y="777.66116941529242"/>
         </view>
