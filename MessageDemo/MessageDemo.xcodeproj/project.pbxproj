@@ -8,6 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		1BE6B5E121F435620090E39A /* BaseTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = 1BE6B5E021F435620090E39A /* BaseTextField.m */; };
+		1BE6B5E421F442BC0090E39A /* MessageManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 1BE6B5E321F442BC0090E39A /* MessageManager.m */; };
+		1BEAFE5821F4653B00466FE8 /* CountryToolBarContentView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1BEAFE5721F4653B00466FE8 /* CountryToolBarContentView.m */; };
+		1BEAFE5A21F4655200466FE8 /* CountryToolBarContentView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1BEAFE5921F4655200466FE8 /* CountryToolBarContentView.xib */; };
+		1BEAFE5E21F4983D00466FE8 /* NSString+Vole.m in Sources */ = {isa = PBXBuildFile; fileRef = 1BEAFE5D21F4983D00466FE8 /* NSString+Vole.m */; };
 		5E00D25921F1CB7F0052DDD5 /* MobileInputContentView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5E00D25321F1CB7F0052DDD5 /* MobileInputContentView.xib */; };
 		5E00D25A21F1CB7F0052DDD5 /* MobileInputContentView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E00D25521F1CB7F0052DDD5 /* MobileInputContentView.m */; };
 		5E00D25B21F1CB7F0052DDD5 /* BaseMessageToolBarContentView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5E00D25621F1CB7F0052DDD5 /* BaseMessageToolBarContentView.xib */; };
@@ -65,7 +69,6 @@
 		5E67F1FF21F069F500DA094E /* NSBundle+JSQMessages.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E67F1CF21F069F500DA094E /* NSBundle+JSQMessages.m */; };
 		5E67F20021F069F500DA094E /* NSString+JSQMessages.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E67F1D021F069F500DA094E /* NSString+JSQMessages.m */; };
 		5E67F20121F069F500DA094E /* UIView+JSQMessages.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E67F1D321F069F500DA094E /* UIView+JSQMessages.m */; };
-		5E67F20421F06C7100DA094E /* DemoModelData.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E67F20321F06C7100DA094E /* DemoModelData.m */; };
 		5E8F32D921F17A980063C23E /* CustomMessagesInputToolbar.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E8F32D821F17A980063C23E /* CustomMessagesInputToolbar.m */; };
 		5E8F32E221F17DBD0063C23E /* BaseMessagesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E8F32E021F17DBD0063C23E /* BaseMessagesViewController.m */; };
 		5E8F32E321F17DBD0063C23E /* BaseMessagesViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5E8F32E121F17DBD0063C23E /* BaseMessagesViewController.xib */; };
@@ -74,6 +77,13 @@
 /* Begin PBXFileReference section */
 		1BE6B5DF21F435620090E39A /* BaseTextField.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BaseTextField.h; sourceTree = "<group>"; };
 		1BE6B5E021F435620090E39A /* BaseTextField.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BaseTextField.m; sourceTree = "<group>"; };
+		1BE6B5E221F442BC0090E39A /* MessageManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MessageManager.h; sourceTree = "<group>"; };
+		1BE6B5E321F442BC0090E39A /* MessageManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MessageManager.m; sourceTree = "<group>"; };
+		1BEAFE5621F4653B00466FE8 /* CountryToolBarContentView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CountryToolBarContentView.h; sourceTree = "<group>"; };
+		1BEAFE5721F4653B00466FE8 /* CountryToolBarContentView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CountryToolBarContentView.m; sourceTree = "<group>"; };
+		1BEAFE5921F4655200466FE8 /* CountryToolBarContentView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CountryToolBarContentView.xib; sourceTree = "<group>"; };
+		1BEAFE5C21F4983D00466FE8 /* NSString+Vole.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSString+Vole.h"; sourceTree = "<group>"; };
+		1BEAFE5D21F4983D00466FE8 /* NSString+Vole.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSString+Vole.m"; sourceTree = "<group>"; };
 		5E00D25321F1CB7F0052DDD5 /* MobileInputContentView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MobileInputContentView.xib; sourceTree = "<group>"; };
 		5E00D25421F1CB7F0052DDD5 /* BaseMessageToolBarContentView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseMessageToolBarContentView.h; sourceTree = "<group>"; };
 		5E00D25521F1CB7F0052DDD5 /* MobileInputContentView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MobileInputContentView.m; sourceTree = "<group>"; };
@@ -185,8 +195,6 @@
 		5E67F1D221F069F500DA094E /* UIImage+JSQMessages.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+JSQMessages.h"; sourceTree = "<group>"; };
 		5E67F1D321F069F500DA094E /* UIView+JSQMessages.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+JSQMessages.m"; sourceTree = "<group>"; };
 		5E67F1D421F069F500DA094E /* NSBundle+JSQMessages.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSBundle+JSQMessages.h"; sourceTree = "<group>"; };
-		5E67F20221F06C7000DA094E /* DemoModelData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DemoModelData.h; sourceTree = "<group>"; };
-		5E67F20321F06C7100DA094E /* DemoModelData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DemoModelData.m; sourceTree = "<group>"; };
 		5E8F32D721F17A980063C23E /* CustomMessagesInputToolbar.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CustomMessagesInputToolbar.h; sourceTree = "<group>"; };
 		5E8F32D821F17A980063C23E /* CustomMessagesInputToolbar.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CustomMessagesInputToolbar.m; sourceTree = "<group>"; };
 		5E8F32DF21F17DBD0063C23E /* BaseMessagesViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BaseMessagesViewController.h; sourceTree = "<group>"; };
@@ -205,9 +213,20 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1BEAFE5B21F497CD00466FE8 /* Categories */ = {
+			isa = PBXGroup;
+			children = (
+				1BEAFE5C21F4983D00466FE8 /* NSString+Vole.h */,
+				1BEAFE5D21F4983D00466FE8 /* NSString+Vole.m */,
+			);
+			path = Categories;
+			sourceTree = "<group>";
+		};
 		5E00D25221F1CB7F0052DDD5 /* TabBarContentViews */ = {
 			isa = PBXGroup;
 			children = (
+				1BE6B5DF21F435620090E39A /* BaseTextField.h */,
+				1BE6B5E021F435620090E39A /* BaseTextField.m */,
 				5E00D25421F1CB7F0052DDD5 /* BaseMessageToolBarContentView.h */,
 				5E00D25821F1CB7F0052DDD5 /* BaseMessageToolBarContentView.m */,
 				5E00D25621F1CB7F0052DDD5 /* BaseMessageToolBarContentView.xib */,
@@ -217,8 +236,9 @@
 				5E00D25D21F1CBE30052DDD5 /* PasswordMessageToolBarContentView.h */,
 				5E00D25E21F1CBE30052DDD5 /* PasswordMessageToolBarContentView.m */,
 				5E00D26021F1CBF00052DDD5 /* PasswordMessageToolBarContentView.xib */,
-				1BE6B5DF21F435620090E39A /* BaseTextField.h */,
-				1BE6B5E021F435620090E39A /* BaseTextField.m */,
+				1BEAFE5621F4653B00466FE8 /* CountryToolBarContentView.h */,
+				1BEAFE5721F4653B00466FE8 /* CountryToolBarContentView.m */,
+				1BEAFE5921F4655200466FE8 /* CountryToolBarContentView.xib */,
 			);
 			path = TabBarContentViews;
 			sourceTree = "<group>";
@@ -248,13 +268,13 @@
 				5E67F15921F0699500DA094E /* AppDelegate.m */,
 				5E67F15B21F0699500DA094E /* ViewController.h */,
 				5E67F15C21F0699500DA094E /* ViewController.m */,
-				5E67F20221F06C7000DA094E /* DemoModelData.h */,
-				5E67F20321F06C7100DA094E /* DemoModelData.m */,
 				5E67F15E21F0699500DA094E /* Main.storyboard */,
 				5E67F16121F0699700DA094E /* Assets.xcassets */,
 				5E67F16321F0699700DA094E /* LaunchScreen.storyboard */,
 				5E67F16621F0699700DA094E /* Info.plist */,
 				5E67F16721F0699700DA094E /* main.m */,
+				1BE6B5E221F442BC0090E39A /* MessageManager.h */,
+				1BE6B5E321F442BC0090E39A /* MessageManager.m */,
 			);
 			path = MessageDemo;
 			sourceTree = "<group>";
@@ -425,6 +445,7 @@
 		5E67F20521F08C2E00DA094E /* Customs */ = {
 			isa = PBXGroup;
 			children = (
+				1BEAFE5B21F497CD00466FE8 /* Categories */,
 				5E00D25221F1CB7F0052DDD5 /* TabBarContentViews */,
 				5E8F32D721F17A980063C23E /* CustomMessagesInputToolbar.h */,
 				5E8F32D821F17A980063C23E /* CustomMessagesInputToolbar.m */,
@@ -496,6 +517,7 @@
 				5E00D26121F1CBF00052DDD5 /* PasswordMessageToolBarContentView.xib in Resources */,
 				5E00D25B21F1CB7F0052DDD5 /* BaseMessageToolBarContentView.xib in Resources */,
 				5E67F1FC21F069F500DA094E /* JSQMessagesAssets.bundle in Resources */,
+				1BEAFE5A21F4655200466FE8 /* CountryToolBarContentView.xib in Resources */,
 				5E67F1EF21F069F500DA094E /* JSQMessagesTypingIndicatorFooterView.xib in Resources */,
 				5E00D25921F1CB7F0052DDD5 /* MobileInputContentView.xib in Resources */,
 				5E8F32E321F17DBD0063C23E /* BaseMessagesViewController.xib in Resources */,
@@ -520,12 +542,12 @@
 				5E67F1FD21F069F500DA094E /* UIImage+JSQMessages.m in Sources */,
 				5E67F1D521F069F500DA094E /* JSQMessagesCollectionViewLayoutAttributes.m in Sources */,
 				5E67F1FA21F069F500DA094E /* JSQMessagesTypingView.m in Sources */,
-				5E67F20421F06C7100DA094E /* DemoModelData.m in Sources */,
 				5E00D25A21F1CB7F0052DDD5 /* MobileInputContentView.m in Sources */,
 				5E67F1EB21F069F500DA094E /* JSQMessagesToolbarContentView.m in Sources */,
 				5E67F1E621F069F500DA094E /* JSQMediaItem.m in Sources */,
 				5E67F1E521F069F500DA094E /* JSQMessage.m in Sources */,
 				5E67F1E321F069F500DA094E /* JSQMessagesBubbleImage.m in Sources */,
+				1BEAFE5E21F4983D00466FE8 /* NSString+Vole.m in Sources */,
 				5E67F15D21F0699500DA094E /* ViewController.m in Sources */,
 				5E67F1F321F069F500DA094E /* JSQMessagesLabel.m in Sources */,
 				5E67F1FE21F069F500DA094E /* UIColor+JSQMessages.m in Sources */,
@@ -545,6 +567,7 @@
 				5E67F16821F0699700DA094E /* main.m in Sources */,
 				5E67F1DD21F069F500DA094E /* JSQMessagesVideoThumbnailFactory.m in Sources */,
 				5E67F1F221F069F500DA094E /* JSQMessagesTypingIndicatorFooterView.m in Sources */,
+				1BE6B5E421F442BC0090E39A /* MessageManager.m in Sources */,
 				5E67F1E721F069F500DA094E /* JSQVideoMediaItem.m in Sources */,
 				5E8F32E221F17DBD0063C23E /* BaseMessagesViewController.m in Sources */,
 				5E67F1DB21F069F500DA094E /* JSQMessagesAvatarImageFactory.m in Sources */,
@@ -554,6 +577,7 @@
 				5E00D25C21F1CB7F0052DDD5 /* BaseMessageToolBarContentView.m in Sources */,
 				5E67F1E121F069F500DA094E /* JSQMessagesAvatarImage.m in Sources */,
 				5E67F1E821F069F500DA094E /* JSQMessagesViewController.m in Sources */,
+				1BEAFE5821F4653B00466FE8 /* CountryToolBarContentView.m in Sources */,
 				5E67F1F721F069F500DA094E /* JSQMessagesCollectionViewCell.m in Sources */,
 				5E67F1F521F069F500DA094E /* JSQMessagesCellTextView.m in Sources */,
 				5E67F1E021F069F500DA094E /* JSQAudioMediaItem.m in Sources */,

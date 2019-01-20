@@ -15,12 +15,15 @@
 
 #import "MobileInputContentView.h"
 #import "PasswordMessageToolBarContentView.h"
+#import "CountryToolBarContentView.h"
 
-@interface CustomMessagesInputToolbar()
+
+@interface CustomMessagesInputToolbar()<CountryToolBarContentViewDelegate>
 @property (assign, nonatomic) BOOL jsq_isObserving;
 @property (nonatomic, assign) ToolbarContentViewType contentViewType;
 @property (strong, nonatomic) MobileInputContentView *mobileInputContentView;
 @property (strong, nonatomic) PasswordMessageToolBarContentView *passwordBarContentView;
+@property (strong, nonatomic) CountryToolBarContentView *countryToolBarContentView;
 @end
 
 
@@ -53,6 +56,14 @@
     }
     return _passwordBarContentView;
 }
+-(CountryToolBarContentView *)countryToolBarContentView{
+    if (_countryToolBarContentView == nil) {
+        _countryToolBarContentView = [[CountryToolBarContentView nib] instantiateWithOwner:nil options:nil].firstObject;
+        _countryToolBarContentView.backgroundColor = [UIColor orangeColor];
+        _countryToolBarContentView.delegate = self;
+    }
+    return _countryToolBarContentView;
+}
 
 
 #pragma mark - Setters
@@ -65,22 +76,19 @@
         self.contentView = self.mobileInputContentView;
     }else if (type == ToolbarContentViewTypePassword){
         self.contentView = self.passwordBarContentView;
+    }else if (type == ToolbarContentViewTypeCountry){
+        self.contentView = self.countryToolBarContentView;
     }
     [self setupContentView];
     self.contentView.textField.delegate = delegate;
 }
 
 
-#pragma mark - Actions
-
-- (void)jsq_leftBarButtonPressed:(UIButton *)sender
-{
-//    [self.delegate messagesInputToolbar:self didPressLeftBarButton:sender];
-}
-
-- (void)jsq_rightBarButtonPressed:(UIButton *)sender
-{
-//    [self.delegate messagesInputToolbar:self didPressRightBarButton:sender];
+#pragma mark - CountryToolBarContentViewDelegate
+-(void)countryToolBarContentView:(CountryToolBarContentView *)contentView didPressCuntryType:(CuntryType)cuntryType{
+    if ([self.delegate respondsToSelector:@selector(messagesInputToolbar:didPressCuntryType:)]) {
+        [self.delegate messagesInputToolbar:self didPressCuntryType:cuntryType];
+    }
 }
 
 #pragma mark - Input toolbar
@@ -90,80 +98,7 @@
     [self addSubview:self.contentView];
     [self jsq_pinAllEdgesOfSubview:self.contentView];
     [self setNeedsUpdateConstraints];
-    [self jsq_addObservers];
 }
 
-
-#pragma mark - Key-value observing
-
-- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context
-{
-    if (context == kJSQMessagesInputToolbarKeyValueObservingContext) {
-        if (object == self.contentView) {
-            
-            if ([keyPath isEqualToString:NSStringFromSelector(@selector(leftBarButtonItem))]) {
-//
-//                [self.contentView.leftBarButtonItem removeTarget:self
-//                                                          action:NULL
-//                                                forControlEvents:UIControlEventTouchUpInside];
-//
-//                [self.contentView.leftBarButtonItem addTarget:self
-//                                                       action:@selector(jsq_leftBarButtonPressed:)
-//                                             forControlEvents:UIControlEventTouchUpInside];
-            }
-            else if ([keyPath isEqualToString:NSStringFromSelector(@selector(rightBarButtonItem))]) {
-                
-//                [self.contentView.rightBarButtonItem removeTarget:self
-//                                                           action:NULL
-//                                                 forControlEvents:UIControlEventTouchUpInside];
-//
-//                [self.contentView.rightBarButtonItem addTarget:self
-//                                                        action:@selector(jsq_rightBarButtonPressed:)
-//                                              forControlEvents:UIControlEventTouchUpInside];
-            }
-            
-//            [self updateSendButtonEnabledState];
-        }
-    }
-}
-
-- (void)jsq_addObservers
-{
-    if (self.jsq_isObserving) {
-        return;
-    }
-    
-    [self.contentView addObserver:self
-                       forKeyPath:NSStringFromSelector(@selector(leftBarButtonItem))
-                          options:0
-                          context:kJSQMessagesInputToolbarKeyValueObservingContext];
-    
-    [self.contentView addObserver:self
-                       forKeyPath:NSStringFromSelector(@selector(rightBarButtonItem))
-                          options:0
-                          context:kJSQMessagesInputToolbarKeyValueObservingContext];
-    
-    self.jsq_isObserving = YES;
-}
-
-- (void)jsq_removeObservers
-{
-    if (!_jsq_isObserving) {
-        return;
-    }
-    
-    @try {
-        [self.contentView removeObserver:self
-                          forKeyPath:NSStringFromSelector(@selector(leftBarButtonItem))
-                             context:kJSQMessagesInputToolbarKeyValueObservingContext];
-        
-        [self.contentView removeObserver:self
-                          forKeyPath:NSStringFromSelector(@selector(rightBarButtonItem))
-                             context:kJSQMessagesInputToolbarKeyValueObservingContext];
-    }
-    @catch (NSException *__unused exception) { }
-    
-    _jsq_isObserving = NO;
-}
 
 @end

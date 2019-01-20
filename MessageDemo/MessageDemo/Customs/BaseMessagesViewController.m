@@ -24,7 +24,8 @@
 #import "NSBundle+JSQMessages.h"
 
 #import <objc/runtime.h>
-
+#import "NSString+Vole.h"
+#import "PasswordMessageToolBarContentView.h"
 
 // Fixes rdar://26295020
 // See issue #1247 and Peter Steinberger's comment:
@@ -97,7 +98,6 @@ static void JSQInstallWorkaroundForSheetPresentationIssue26295020(void) {
     }
 }
 
-
 @interface BaseMessagesViewController () 
 
 @property (weak, nonatomic) IBOutlet JSQMessagesCollectionView *collectionView;
@@ -140,10 +140,10 @@ static void JSQInstallWorkaroundForSheetPresentationIssue26295020(void) {
     self.collectionView.dataSource = self;
     self.collectionView.delegate = self;
 
-    [self.inputToolbar setCententViewType:ToolbarContentViewTypePassword delegate:self];
+//    [self.inputToolbar setCententViewType:ToolbarContentViewTypePassword delegate:self];
     [self.inputToolbar removeFromSuperview];
-    
-    
+
+    self.inputToolbar.delegate = self;
     self.automaticallyScrollsToMostRecentMessage = YES;
     
     self.outgoingCellIdentifier = [JSQMessagesCollectionViewCellOutgoing cellReuseIdentifier];
@@ -350,9 +350,9 @@ static void JSQInstallWorkaroundForSheetPresentationIssue26295020(void) {
     }
     
     UIAccessibilityPostNotification(UIAccessibilityAnnouncementNotification, [NSBundle jsq_localizedStringForKey:@"new_message_received_accessibility_announcement"]);
-    //测试用，修改toobar类型
-    [self.inputToolbar setCententViewType:ToolbarContentViewTypeMobile delegate:self];
-    [self.inputToolbar.contentView.textField becomeFirstResponder];
+//    //测试用，修改toobar类型
+//    [self.inputToolbar setCententViewType:ToolbarContentViewTypeMobile delegate:self];
+//    [self.inputToolbar.contentView.textField becomeFirstResponder];
 }
 
 - (void)scrollToBottomAnimated:(BOOL)animated
@@ -716,34 +716,37 @@ static void JSQInstallWorkaroundForSheetPresentationIssue26295020(void) {
          touchLocation:(CGPoint)touchLocation { }
 
 #pragma mark - Input toolbar delegate
-
-- (void)messagesInputToolbar:(JSQMessagesInputToolbar *)toolbar didPressLeftBarButton:(UIButton *)sender
-{
-    if (toolbar.sendButtonLocation == JSQMessagesInputSendButtonLocationLeft) {
-        [self didPressSendButton:sender
-                 withMessageText:[self jsq_currentlyComposedMessageText]
-                        senderId:[self.collectionView.dataSource senderId]
-               senderDisplayName:[self.collectionView.dataSource senderDisplayName]
-                            date:[NSDate date]];
-    }
-    else {
-        [self didPressAccessoryButton:sender];
-    }
+- (void)messagesInputToolbar:(CustomMessagesInputToolbar *)toolbar didPressCuntryType:(CuntryType)cuntryType{
+    
 }
 
-- (void)messagesInputToolbar:(JSQMessagesInputToolbar *)toolbar didPressRightBarButton:(UIButton *)sender
-{
-    if (toolbar.sendButtonLocation == JSQMessagesInputSendButtonLocationRight) {
-        [self didPressSendButton:sender
-                 withMessageText:[self jsq_currentlyComposedMessageText]
-                        senderId:[self.collectionView.dataSource senderId]
-               senderDisplayName:[self.collectionView.dataSource senderDisplayName]
-                            date:[NSDate date]];
-    }
-    else {
-        [self didPressAccessoryButton:sender];
-    }
-}
+//- (void)messagesInputToolbar:(JSQMessagesInputToolbar *)toolbar didPressLeftBarButton:(UIButton *)sender
+//{
+//    if (toolbar.sendButtonLocation == JSQMessagesInputSendButtonLocationLeft) {
+//        [self didPressSendButton:sender
+//                 withMessageText:[self jsq_currentlyComposedMessageText]
+//                        senderId:[self.collectionView.dataSource senderId]
+//               senderDisplayName:[self.collectionView.dataSource senderDisplayName]
+//                            date:[NSDate date]];
+//    }
+//    else {
+//        [self didPressAccessoryButton:sender];
+//    }
+//}
+//
+//- (void)messagesInputToolbar:(JSQMessagesInputToolbar *)toolbar didPressRightBarButton:(UIButton *)sender
+//{
+//    if (toolbar.sendButtonLocation == JSQMessagesInputSendButtonLocationRight) {
+//        [self didPressSendButton:sender
+//                 withMessageText:[self jsq_currentlyComposedMessageText]
+//                        senderId:[self.collectionView.dataSource senderId]
+//               senderDisplayName:[self.collectionView.dataSource senderDisplayName]
+//                            date:[NSDate date]];
+//    }
+//    else {
+//        [self didPressAccessoryButton:sender];
+//    }
+//}
 
 - (NSString *)jsq_currentlyComposedMessageText
 {
@@ -776,7 +779,6 @@ static void JSQInstallWorkaroundForSheetPresentationIssue26295020(void) {
         dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
             [self scrollToBottomAnimated:YES];
         });
-        
     }
 }
 - (BOOL)textFieldShouldBeginEditing:(UITextField *)textField{
@@ -794,11 +796,16 @@ static void JSQInstallWorkaroundForSheetPresentationIssue26295020(void) {
 }
 -(BOOL)textFieldShouldReturn:(UITextField *)textField{
 //    [textField resignFirstResponder];
+    NSString *text = [self jsq_currentlyComposedMessageText];
+    if ([textField.superview isKindOfClass:[PasswordMessageToolBarContentView class]]) {
+        text = [NSString getStartStringWithLength:[self jsq_currentlyComposedMessageText].length];
+    }
     [self didPressSendButton:nil
-             withMessageText:[self jsq_currentlyComposedMessageText]
+             withMessageText:text
                     senderId:[self.collectionView.dataSource senderId]
            senderDisplayName:[self.collectionView.dataSource senderDisplayName]
                         date:[NSDate date]];
+    [self.inputToolbar setHidden:YES];
     return NO;
 }
 #pragma mark - Notifications

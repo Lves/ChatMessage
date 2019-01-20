@@ -8,11 +8,12 @@
 
 #import "ViewController.h"
 #import "JSQMessagesViewAccessoryButtonDelegate.h"
-
+#import "MessageManager.h"
 @interface ViewController ()<JSQMessagesViewAccessoryButtonDelegate>
 @property (nonatomic,strong) NSMutableArray *messages;
 @property (nonatomic,strong) JSQMessagesBubbleImage *incomingBubbleImageData;
 @property (nonatomic,strong) JSQMessagesBubbleImage *outgoingBubbleImageData;
+@property (nonatomic,strong) MessageManager *messageManager;
 @end
 
 @implementation ViewController
@@ -23,11 +24,12 @@
 {
     [super viewDidLoad];
     
-    self.title = @"JSQMessages";
+    self.title = @"首页";
+    self.messageManager = [[MessageManager alloc] init];
+    [self.inputToolbar setHidden:YES];
     
     self.inputToolbar.contentView.textField.pasteDelegate = self;
     JSQMessagesBubbleImageFactory *bubbleFactory = [[JSQMessagesBubbleImageFactory alloc] init];
-    
     self.incomingBubbleImageData = [bubbleFactory incomingMessagesBubbleImageWithColor:[UIColor jsq_messageBubbleBlueColor]];
     self.outgoingBubbleImageData = [bubbleFactory outgoingMessagesBubbleImageWithColor:[UIColor jsq_messageBubbleLightGrayColor]];
     
@@ -72,6 +74,7 @@
 {
     [super viewDidAppear:animated];
     self.collectionView.collectionViewLayout.springinessEnabled = NO;
+    [self showMessageModel:[self.messageManager getNextMessageModel] index:0];
 }
 
 
@@ -92,12 +95,51 @@
 
 
 #pragma mark - Testing
-
-- (void)pushMainViewController
-{
-    UIStoryboard *sb = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-    UINavigationController *nc = [sb instantiateInitialViewController];
-    [self.navigationController pushViewController:nc.topViewController animated:YES];
+    //测试代码
+- (void)showMessageModel:(MessageModel *)messageModel index:(NSUInteger)index{
+    if (index < messageModel.messages.count) {
+        JSQMessage *nextMessage = messageModel.messages[index];
+        self.showTypingIndicator = YES;
+        [self scrollToBottomAnimated:YES];
+        __weak ViewController *weakSelf = self;
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            [weakSelf.messages addObject:nextMessage];
+            [weakSelf finishReceivingMessageAnimated:YES];
+            [weakSelf showMessageModel:messageModel index:index+1];
+        });
+    }else if (index == messageModel.messages.count){//该用户输入了
+        __weak ViewController *weakSelf = self;
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            if(messageModel.actionType == ActionTypeMobile){
+                [weakSelf.inputToolbar setHidden:NO];
+                [weakSelf.inputToolbar setCententViewType:ToolbarContentViewTypeMobile delegate:weakSelf];
+                [weakSelf.inputToolbar.contentView.textField becomeFirstResponder];
+            }else if (messageModel.actionType == ActionTypePassword){
+                [weakSelf.inputToolbar setHidden:NO];
+                [weakSelf.inputToolbar setCententViewType:ToolbarContentViewTypePassword delegate:weakSelf];
+                [weakSelf.inputToolbar.contentView.textField becomeFirstResponder];
+            }else if (messageModel.actionType == ActionTypeCountry){
+                [weakSelf.inputToolbar setHidden:NO];
+                [weakSelf.inputToolbar setCententViewType:ToolbarContentViewTypeCountry delegate:weakSelf];
+//                [weakSelf.inputToolbar.contentView.textField becomeFirstResponder];
+                
+                
+                [UIView animateWithDuration:0.25
+                                      delay:0.0
+                                    options:UIViewAnimationOptionTransitionFlipFromBottom
+                                 animations:^{
+                                     const UIEdgeInsets insets = self.additionalContentInset;
+                                     [self jsq_setCollectionViewInsetsTopValue:insets.top
+                                                                   bottomValue:weakSelf.inputToolbar.contentView.frame.size.height + insets.bottom];
+                                 }
+                                 completion:^(BOOL finished) {
+                                     [self scrollToBottomAnimated:YES];
+                                 }];
+            }
+        });
+       
+    }
+    
 }
 
 
@@ -131,6 +173,28 @@
         }
     });
 }
+#pragma mark - MessageToolBar Delegate
+-(void)messagesInputToolbar:(CustomMessagesInputToolbar *)toolbar didPressCuntryType:(CuntryType)cuntryType{
+    NSString *cuntry = cuntryType == 0 ? @"中国" : ( cuntryType == 1 ? @"美国" : @"其他");
+    JSQMessage *message = [[JSQMessage alloc] initWithSenderId:[self.collectionView.dataSource senderId]
+                                             senderDisplayName:[self.collectionView.dataSource senderDisplayName]
+                                                          date:[NSDate date]
+                                                          text:cuntry];
+    [self.messages addObject:message];
+    [self.inputToolbar setHidden:YES];
+    [UIView animateWithDuration:0.25
+                          delay:0.0
+                        options:UIViewAnimationOptionTransitionFlipFromBottom
+                     animations:^{
+                         const UIEdgeInsets insets = self.additionalContentInset;
+                         [self jsq_setCollectionViewInsetsTopValue:insets.top
+                                                       bottomValue:insets.bottom];
+                     }
+                     completion:nil];
+    [self finishSendingMessageAnimated:YES];
+    
+    [self showMessageModel:[self.messageManager getNextMessageModel] index:0];
+}
 
 #pragma mark - JSQMessagesViewController method overrides
 
@@ -153,6 +217,11 @@
                                                           text:text];
     [self.messages addObject:message];
     [self finishSendingMessageAnimated:YES];
+    
+    //测试用
+    [self.inputToolbar.contentView.textField resignFirstResponder];
+//    [self.inputToolbar removeFromSuperview];
+    [self showMessageModel:[self.messageManager getNextMessageModel] index:0];
 }
 
 - (void)didPressAccessoryButton:(UIButton *)sender

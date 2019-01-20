@@ -17,7 +17,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 
 
-@interface BaseMessagesViewController : UIViewController<JSQMessagesCollectionViewDataSource,
+@interface BaseMessagesViewController : UIViewController<JSQMessagesCollectionViewDataSource,MessagesInputToolbarDelegate,
 JSQMessagesCollectionViewDelegateFlowLayout,
 UITextFieldDelegate>
 /**
@@ -289,6 +289,7 @@ UITextFieldDelegate>
  @param notification The posted notification.
  */
 - (void)didReceiveMenuWillHideNotification:(NSNotification *)notification;
+- (void)jsq_setCollectionViewInsetsTopValue:(CGFloat)top bottomValue:(CGFloat)bottom;
 @end
 
 NS_ASSUME_NONNULL_END
